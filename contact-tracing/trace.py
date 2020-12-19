@@ -28,6 +28,7 @@ def main():
     changeInTime = []
     exposures = []
     lastTime = 1
+    added = {}
 
     file = open("output.csv", "a")
 
@@ -62,7 +63,7 @@ def main():
                 per.person.exposed = 2
     uniqueId = 1
     for time in range(1,lastTime+1):
-        print('time:' + str(time))
+        #print('time:' + str(time))
         currentTimePersons = []
         for person in personsInTime:
             if int(person.time) == time:
@@ -71,7 +72,7 @@ def main():
         for exp in currentTimePersons:
             if exp.person.exposed != 2:
                 continue
-            print('Iterating for exposed: ' + str(exp.person.name))
+            #print('Iterating for exposed: ' + str(exp.person.name))
             for curr in currentTimePersons:
                     if curr.person.name == exp.person.name:
                         continue
@@ -81,11 +82,13 @@ def main():
                             #print(curr.person.__str__() + ' ------' + exp.person.__str__())
                             if ( (int(curr.person.x) + xInc) == int(exp.person.x) and  ( int(curr.person.y) + yInc) == int(exp.person.y) ):
                                 curr.person.exposed = curr.person.exposed + 1
-                                print('exposed' + str(curr.person.name))
-                                #file.write(str(uniqueId) + "," + str(time)+ ","+ curr.person.name)
+                                #print('exposed' + str(curr.person.name))
                                 if curr.person.exposed == 1:
-                                    file.write(str(uniqueId) + "," + str(time)+ ","+ curr.person.name+ '\n')
+                                    #file.write(str(uniqueId) + "," + str(time)+ ","+ curr.person.name+ '\n')
+                                    added[curr.person.name] = str(uniqueId) + "," + str(time)+ ","+ curr.person.name+ '\n'
                                     uniqueId = uniqueId +1
+    for key ,value in added.items():
+        file.write(value)
     file.close()                    
                     
 if __name__ == "__main__":
