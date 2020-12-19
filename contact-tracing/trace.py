@@ -83,8 +83,8 @@ def main():
                                 curr.person.exposed = curr.person.exposed + 1
                                 print('exposed' + str(curr.person.name))
                                 #file.write(str(uniqueId) + "," + str(time)+ ","+ curr.person.name)
-                                if curr.person.exposed >= 1:
-                                    file.write(str(uniqueId) + "," + str(time)+ ","+ curr.person.name)
+                                if curr.person.exposed == 1:
+                                    file.write(str(uniqueId) + "," + str(time)+ ","+ curr.person.name+ '\n')
                                     uniqueId = uniqueId +1
     file.close()                    
                     
