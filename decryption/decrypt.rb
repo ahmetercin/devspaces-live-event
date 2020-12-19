@@ -10,9 +10,9 @@ OUTPUT_FILE = "output.txt"
 # Read the input message
 # Note: This currently reads the test input.
 #       Your solution will be evaluated using INPUT_FILE
-text = File.read(TEST_INPUT_FILE).chomp
+#text = File.read(TEST_INPUT_FILE).chomp
 # Use this for the real solution
-#text = File.read(INPUT_FILE).chomp
+text = File.read(INPUT_FILE).chomp
 
 #
 # NOTE: This is just the example. The actual solution
@@ -28,27 +28,9 @@ text = File.read(TEST_INPUT_FILE).chomp
 #       solving problems like this.
 #       https://tinyurl.com/y7grbrs4
 #
-decrypted_text = ceasar_cipher_decrypt(text, -3)
+decrypted_text = ceasar_cipher_decrypt(text, 7)
 
 # Write the decrypted message to the output file
 File.open(OUTPUT_FILE, "w") { |f| f.write decrypted_text }
 
-#
-# Display the results. This is just for information.
-# Your solution will be based on the contents of OUTPUT_FILE
-#
-5.times do 
-    puts " "
-end
-puts cyan "Note this is the test input. See the real #{INPUT_FILE} for this challenge."
-puts cyan "The test uses ceasar cipher with -3 character offset."
-puts " "
-puts cyan "TEST Input Message"
-puts cyan "------------------"
-puts text
-puts " "
-puts cyan "Decrypted Content"
-puts cyan "-----------------"
-puts decrypted_text
-puts " "
-
+puts decrypted_text.reverse
